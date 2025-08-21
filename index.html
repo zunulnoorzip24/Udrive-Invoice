@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Invoice - U Drive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'Roc Grotesk';
+            src: url('./RocGrotesk.woff') format('woff2'),
+                url('./RocGrotesk.woff') format('woff');
+        }
+
+        body {
+            font-family: 'Roc Grotesk';
+            background-color: #f8f7ff;
+            padding: 20px;
+            color: #333;
+        }
+
+        .invoice-container {
+            width: 210mm;
+            margin: 0 auto;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-container {
+            background-color: #F2F6FF;
+            padding: 20px 25px;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #CBD7F1;
+            padding-bottom: 15px;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-style: bold;
+            font-size: 14px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: capitalize;
+        }
+
+        .top-content {
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content-heading {
+            font-weight: 400;
+            font-style: Regular;
+            font-size: 11px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: uppercase;
+            color: #5632C9;
+            padding-bottom: 8px;
+        }
+
+        .content-subheading {
+            font-weight: 500;
+            font-style: Medium;
+            font-size: 11px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: capitalize;
+            color: #0A0A0B;
+            padding-bottom: 8px;
+        }
+
+        .content-text {
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 18px;
+            letter-spacing: 0%;
+            color: rgba(10, 10, 11, 0.7);
+        }
+
+        .right-content {
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            text-align: right;
+        }
+
+        .invoice-text p {
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 18px;
+            letter-spacing: 0%;
+            color: #0A0A0B;
+        }
+
+        table {
+            width: 100%;
+            font-family: 'Roc Grotesk', sans-serif;
+            padding: 10px 20px;
+        }
+
+        th {
+            color: #5632C9;
+            font-size: 11px;
+            font-weight: 500;
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 1px solid #F3F3F3;
+        }
+
+        td {
+            color: rgba(10, 10, 11, 0.7);
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 18px;
+            padding: 8px 12px;
+            border-bottom: 1px solid #F3F3F3;
+        }
+
+        .invoice-summary {
+            width: 400px;
+            margin-left: auto;
+            padding: 20px;
+        }
+
+        .invoice-summary-heading {
+            font-weight: 500;
+            font-size: 11px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: capitalize;
+            color: #0A0A0B;
+            padding-bottom: 10px;
+        }
+
+        .invoice-summary-right,
+        .invoice-summary-left p {
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 18px;
+            letter-spacing: 0%;
+            color: rgba(10, 10, 11, 0.7);
+        }
+
+        .invoice-summary-left p {
+            text-align: right;
+        }
+
+        .invoice-total {
+            display: flex;
+            background-color: #F2F6FF;
+            padding: 15px;
+            width: 365px;
+            border-radius: 4px;
+            margin: auto 20px auto auto;
+            justify-content: space-between;
+        }
+
+        .invoice-total,
+        .total-text {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: capitalize;
+            color: #0A0A0B;
+        }
+
+        .total-number {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: capitalize;
+            color: #5632C9;
+        }
+
+        footer {
+            padding: 20px;
+            margin-top: 200px;
+        }
+
+        .footer-left-content,
+        .footer-right-content {
+            padding-top: 20px;
+        }
+
+        .footer-left-content,
+        .footer-right-content p {
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 18px;
+            letter-spacing: 0%;
+            color: rgba(10, 10, 11, 0.7);
+
+        }
+
+        .footer-right-content p {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-container">
+
+        <div class="top-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <svg width="83" height="23" viewBox="0 0 83 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21.3801 19.348C21.2708 19.3321 21.1631 19.3047 21.058 19.2601C15.9088 17.1756 12.5247 11.4872 12.3431 7.41227C12.2648 5.65159 12.0888 1.57747 15.1541 0.865886C15.9019 0.694068 16.6459 1.15353 16.8193 1.89841C16.9928 2.6433 16.5324 3.38354 15.7845 3.55536C15.4069 3.64657 14.9794 4.36236 15.1078 7.27117C15.2355 10.1038 17.7276 14.9368 22.0948 16.7025C22.8054 16.9874 23.1456 17.7976 22.8604 18.5048C22.6148 19.1009 21.9957 19.4377 21.3801 19.348Z"
+                            fill="url(#paint0_linear_2014_1617)" />
+                        <path
+                            d="M8.6561 20.7756C6.98173 20.5315 5.44338 19.7573 4.17907 18.5141C2.36506 16.7286 1.41057 14.0855 1.42762 10.8644C1.43755 8.25658 2.10331 5.42257 3.23831 3.07819C3.57367 2.38992 4.40231 2.10703 5.08814 2.44101C5.77972 2.77583 6.06485 3.60135 5.73032 4.28389C3.80813 8.2394 3.42877 13.9058 6.12231 16.5508C7.05762 17.4711 8.15254 17.9817 9.38405 18.0793C10.1519 18.1327 10.7178 18.8061 10.6602 19.5641C10.6026 20.3221 9.93197 20.8913 9.1707 20.833C9.00217 20.8201 8.82872 20.8007 8.6561 20.7756Z"
+                            fill="url(#paint1_linear_2014_1617)" />
+                        <path
+                            d="M9.08391 20.8264C8.36467 20.7216 7.84727 20.0787 7.9007 19.3493C7.9583 18.5913 8.62888 18.0221 9.39015 18.0804C12.0217 18.2885 14.7794 16.5024 15.9381 13.8339C16.8768 11.7885 17.0318 9.39485 17.0643 7.31686C17.0825 6.18453 16.8686 5.11198 16.6595 4.49061C16.5615 4.19551 16.217 3.45494 15.7908 3.55664C15.0488 3.72929 14.2991 3.269 14.1256 2.52411C13.9521 1.77922 14.4126 1.03899 15.1604 0.867169C16.9242 0.457319 18.627 1.59478 19.2992 3.63509C19.6618 4.73517 19.8578 6.09177 19.8426 7.36495C19.8094 9.72952 19.6199 12.4808 18.4821 14.9652C16.8482 18.717 13.0218 21.143 9.18172 20.8407C9.14145 20.8348 9.11268 20.8306 9.08391 20.8264Z"
+                            fill="url(#paint2_linear_2014_1617)" />
+                        <path
+                            d="M38.1534 2.07275H40.3794V19.9232H38.1534V17.731C37.0464 19.4113 35.4314 20.2544 33.3143 20.2544C31.5238 20.2544 29.9935 19.604 28.7292 18.3032C27.465 17.0023 26.8359 15.4184 26.8359 13.5454C26.8359 11.6785 27.465 10.0886 28.7292 8.78774C29.9935 7.4869 31.5178 6.83648 33.3143 6.83648C35.4314 6.83648 37.0464 7.67962 38.1534 9.35987V2.07275ZM33.5986 18.1104C34.893 18.1104 35.9818 17.6708 36.8529 16.7975C37.7239 15.9243 38.1594 14.8403 38.1594 13.5454C38.1594 12.2567 37.7239 11.1726 36.8529 10.2933C35.9818 9.42009 34.8991 8.98046 33.5986 8.98046C32.3162 8.98046 31.2395 9.42009 30.3745 10.2933C29.5035 11.1666 29.068 12.2506 29.068 13.5454C29.068 14.8403 29.5035 15.9183 30.3745 16.7975C31.2395 17.6768 32.3162 18.1104 33.5986 18.1104Z"
+                            fill="#14143A" />
+                        <path
+                            d="M45.7848 9.31717C46.5167 7.73327 47.8474 6.94434 49.777 6.94434V9.26296C48.6822 9.21478 47.7446 9.50386 46.9583 10.1302C46.1719 10.7565 45.7787 11.7683 45.7787 13.1655V19.9226H43.5527V7.17319H45.7787L45.7848 9.31717Z"
+                            fill="#14143A" />
+                        <path
+                            d="M53.0864 4.85479C52.657 4.85479 52.3001 4.71025 52.0097 4.42118C51.7194 4.1321 51.5742 3.7828 51.5742 3.37328C51.5742 2.96375 51.7194 2.61445 52.0097 2.31333C52.3001 2.01824 52.657 1.86768 53.0864 1.86768C53.4978 1.86768 53.8486 2.01824 54.1389 2.31333C54.4293 2.60843 54.5745 2.96375 54.5745 3.37328C54.5745 3.7828 54.4293 4.1321 54.1389 4.42118C53.8425 4.71025 53.4917 4.85479 53.0864 4.85479ZM51.9553 19.9229V7.17342H54.1813V19.9229H51.9553Z"
+                            fill="#14143A" />
+                        <path
+                            d="M66.4681 7.17383H68.8755L63.7521 19.9233H61.139L56.0156 7.17383H58.4231L62.4456 17.5264L66.4681 7.17383Z"
+                            fill="#14143A" />
+                        <path
+                            d="M71.2041 14.5684C71.4279 15.7066 71.9481 16.5919 72.7768 17.2182C73.6055 17.8446 74.6217 18.1638 75.8375 18.1638C77.5251 18.1638 78.7591 17.5435 79.5273 16.3028L81.4206 17.3748C80.1746 19.296 78.2934 20.2535 75.7891 20.2535C73.7567 20.2535 72.1053 19.6212 70.8351 18.3565C69.5648 17.0918 68.9297 15.4898 68.9297 13.5506C68.9297 11.6295 69.5527 10.0335 70.7988 8.75676C72.0449 7.48001 73.6599 6.84766 75.6379 6.84766C77.513 6.84766 79.0495 7.5041 80.235 8.82301C81.4206 10.1419 82.0134 11.7258 82.0134 13.5807C82.0134 13.9059 81.9892 14.2372 81.9348 14.5744H71.2041V14.5684ZM75.6379 8.93141C74.4402 8.93141 73.4542 9.26867 72.6679 9.93715C71.8815 10.6117 71.3976 11.503 71.2101 12.6292H79.7632C79.5757 11.4247 79.0979 10.5033 78.3296 9.87693C77.5554 9.24458 76.6602 8.93141 75.6379 8.93141Z"
+                            fill="#14143A" />
+                        <defs>
+                            <linearGradient id="paint0_linear_2014_1617" x1="14.0103" y1="2.57284" x2="19.2722"
+                                y2="18.0843" gradientUnits="userSpaceOnUse">
+                                <stop offset="0.1569" stop-color="#2562CF" />
+                                <stop offset="0.9901" stop-color="#2FF9B5" />
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_2014_1617" x1="2.60993" y1="3.97392" x2="7.13341"
+                                y2="20.1021" gradientUnits="userSpaceOnUse">
+                                <stop offset="0.000309974" stop-color="#FF51EB" />
+                                <stop offset="0.768" stop-color="#923BE3" />
+                            </linearGradient>
+                            <linearGradient id="paint2_linear_2014_1617" x1="11.6995" y1="20.4248" x2="18.3519"
+                                y2="3.02341" gradientUnits="userSpaceOnUse">
+                                <stop offset="0.0685534" stop-color="#923BE3" />
+                                <stop offset="0.0918644" stop-color="#8A3AE2" />
+                                <stop offset="0.2441" stop-color="#5D31DF" />
+                                <stop offset="0.3798" stop-color="#3C2ADC" />
+                                <stop offset="0.4927" stop-color="#2826DB" />
+                                <stop offset="0.5689" stop-color="#2125DA" />
+                                <stop offset="0.8983" stop-color="#2562CF" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="logo-text">Tax Invoice</div>
+            </div>
+            <div class="top-content">
+                <div class="left-content">
+                    <div>
+                        <p class="content-heading">From</p>
+                        <p class="content-subheading">U Drive Rent a Car LLC</p>
+                        <p class="content-text">customerservice@udrive.ae</p>
+                        <p class="content-text">800-837483</p>
+                    </div>
+                    <div>
+                        <p class="content-heading">Bill To</p>
+                        <p class="content-subheading">Dhurbius Joy</p>
+                        <p class="content-text">Cdhurbius@gmail.com</p>
+                        <p class="content-text">+971555511</p>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <div class="invoice-text">
+                        <p>Invoice#</p>
+                        <p>Invoice Date Time</p>
+                    </div>
+                    <div class="invoice-text">
+                        <p>INV-100</p>
+                        <p>2025-08-19 14:30:56</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Details</th>
+                    <th>Unit Price (incl. VAT)</th>
+                    <th>Paid via Credits</th>
+                    <th>Net Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Alice Smith</td>
+                    <td>79.00</td>
+                    <td>AED 20.00</td>
+                    <td>AED 59.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="invoice-summary">
+            <p class="invoice-summary-heading">Invoice Summary</p>
+            <div style="display: flex;justify-content: space-between; padding-bottom: 15px;">
+                <div class="invoice-summary-right">
+                    <p>Invoice Value:</p>
+                    <p>VAT 5%:</p>
+                    <p>Taxable Amount:</p>
+                </div>
+                <div class="invoice-summary-left">
+                    <p></p>
+                    <p>AED79.00</p>
+                    <p>AED3.76</p>
+                    <p>AED75.24</p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #F3F3F3; padding-top: 15px;">
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="invoice-summary-right">
+                        <p>Less: Utilised Credits:</p>
+                    </div>
+                    <div class="invoice-summary-left">
+                        <p>-AED20.00</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="invoice-total">
+            <p class="total-text">Net Total:</p>
+            <p class="total-number">AED59.00</p>
+        </div>
+
+        <footer>
+            <div
+                style="display: flex; border-top: 1px solid #F3F3F3;justify-content: space-between;align-items: center;">
+
+                <div class="footer-left-content">
+                    <p>Concord Tower, Office 812 Dubai Media City</p>
+                    <p>Dubai - United Arab Emirates.</p>
+                </div>
+                <div class="footer-right-content">
+                    <p>Tax Reg. No</p>
+                    <p>100557548300003</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
