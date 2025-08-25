@@ -217,6 +217,41 @@
         .footer-right-content p {
             text-align: right;
         }
+                @media screen and (max-width:420px) {
+            body {
+                padding: 10px;
+            }
+
+            .invoice-container {
+                width: 100%;
+                margin: auto;
+            }
+
+            .top-content {
+                flex-direction: column;
+            }
+
+            .left-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .right-content {
+                flex-direction: row;
+                width: 100%;
+                padding-top: 20px;
+                text-align: left;
+            }
+
+            .invoice-summary {
+                width: 100%;
+            }
+
+            .invoice-total {
+                width: 95%;
+                margin: auto;
+            }
+        }
     </style>
 </head>
 
@@ -374,5 +409,6 @@
         </footer>
     </div>
 </body>
+
 
 </html>
