@@ -97,6 +97,13 @@
             color: rgba(10, 10, 11, 0.7);
         }
 
+        .footer-text {
+            font-weight: 400;
+            font-size: 11px;
+            color: rgba(10, 10, 11, 0.7);
+            margin-top: 20px;
+        }
+
         .right-content {
             display: flex;
             justify-content: space-between;
@@ -217,7 +224,8 @@
         .footer-right-content p {
             text-align: right;
         }
-                @media screen and (max-width:420px) {
+
+        @media screen and (max-width:420px) {
             body {
                 padding: 10px;
             }
@@ -317,8 +325,9 @@
                     <div>
                         <p class="content-heading">From</p>
                         <p class="content-subheading">U Drive Rent a Car LLC</p>
-                        <p class="content-text">customerservice@udrive.ae</p>
-                        <p class="content-text">800-837483</p>
+                        <p class="content-text">VAT Number: 100557548300003</p>
+                        <p class="content-text">Office 812, Concord Tower, Dubai Media City</p>
+                        <p class="content-text">Dubai - United Arab Emirates</p>
                     </div>
                     <div>
                         <p class="content-heading">Bill To</p>
@@ -345,15 +354,15 @@
                 <tr>
                     <th>ID</th>
                     <th>Details</th>
-                    <th>Unit Price (incl. VAT)</th>
-                    <th>Paid via Credits</th>
+                    <th>Unit Price <br> (incl. VAT)</th>
+                    <th>Paid <br> via Credits</th>
                     <th>Net Total</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>Alice Smith</td>
+                    <td>Monthly Charge for Reservation# 1234 - Month 2</td>
                     <td>79.00</td>
                     <td>AED 20.00</td>
                     <td>AED 59.00</td>
@@ -394,21 +403,13 @@
         </div>
 
         <footer>
-            <div
-                style="display: flex; border-top: 1px solid #F3F3F3;justify-content: space-between;align-items: center;">
+            <div style="display: flex; border-top: 1px solid #F3F3F3;justify-content: center;align-items: center;">
 
-                <div class="footer-left-content">
-                    <p>Concord Tower, Office 812 Dubai Media City</p>
-                    <p>Dubai - United Arab Emirates.</p>
-                </div>
-                <div class="footer-right-content">
-                    <p>Tax Reg. No</p>
-                    <p>100557548300003</p>
-                </div>
+                <p class="footer-text">For any Inquiries regarding this invoice, please contact Udrive at Tel.:
+                    800-Udrive | Email: customerservice@udrive.ae | Web: www.udrive.ae</p>
             </div>
         </footer>
     </div>
 </body>
-
 
 </html>
